@@ -1,0 +1,10 @@
+<%= link_to "Create new User" , new_user_path%>
+<% @users.each do |user|%>
+<%= content_tag(:div,  user, class: "post-index-page", style:"color:red") do %>
+  <p>
+  <%= link_to user.name, user_path(user.id)%>
+  <%= link_to "delete", user, method: :delete%>
+  <%= link_to "Edit", edit_user_path(user) %>
+  </p>
+<% end %>
+<%end%>

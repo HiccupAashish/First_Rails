@@ -1,0 +1,49 @@
+<h1> Create new Post </h1>
+
+<%= form_with model: @post do |form|%>
+ <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this friend from being saved:</h2>
+
+      <ul>
+        <% @post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class= "p-5 mb-4 bg-light rounded-3">
+        <div class ="container-fluid py-5">
+            <strong> Title: </strong>
+            <%= form.text_field :title%>
+                   </br>
+            <strong> Description: </strong>
+            <%= form.text_field :description %>
+                   </br>
+            <strong>
+                <%= "Category".pluralize(Category.all)%>
+            </strong>
+            <%= form.collection_check_boxes :category_ids, Category.order(:name), :id, :name %>
+                    </br>
+            </strong>New Category   </strong>
+
+            <button id="addCategory"> Create New Category </button>
+
+            <div class="nested_form">
+
+            </div>
+            <%# <%= form.fields_for :categories do |category|%>
+              <%# <li> %>
+                  <%# <%= category.label :name%> 
+                  <%# <%= category.text_field :name%> 
+              <%# </li>  %>
+            <%# <% end%> 
+            <strong> Status: </strong>
+            <%= form.text_field :status%>
+                    </br>
+            <%= form.submit%>
+        </div>
+  </div>
+<%end%>
+<%= link_to "Go Back Home", posts_path%>
+    <%= javascript_pack_tag 'post', 'data-turbolinks-track': 'reload' %>

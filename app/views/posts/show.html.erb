@@ -1,0 +1,21 @@
+
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class ="container-fluid py-5">
+        <strong>Title:</strong>
+        <%= @post.title%>
+            </br>
+        <strong>Description:</strong>
+        <%= @post.description%>
+            </br>
+        <strong>
+        <%= "Category".pluralize(@post.categories.count)%>
+        </strong>:  
+        <%= @post.categories.map {|category| category.name}.join(", ")%>
+             </br>
+        <strong>Status: </strong>
+        <%= @post.status%>
+
+    </div>
+</div>
+<%= link_to "Main menu", Post, class: "btn btn-primary"%>
+<%= link_to "Edit", edit_post_path(@post.id), class: "btn btn-primary"%>

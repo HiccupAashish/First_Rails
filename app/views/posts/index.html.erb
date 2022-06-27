@@ -1,0 +1,30 @@
+<table class="table table-striped-columns">
+    <thead>
+        <tr>
+           <th> Title </th> 
+           <th> Description </th> 
+           <th> Status </th> 
+           <th> Categories </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @post.each do |post| {}%>
+
+            <tr>
+            <td> <%= post.title %> </td>
+            <td> <%= post.description%></td>
+            <td> <%=  post.status%> </td>
+            <td> 
+                <%= post.categories.map {|cat| cat.name}.join(", ")%>
+             </td>
+            <td> <%= link_to "Show", post_path(post.id) %>
+            <td> <%= link_to "Delete", post, method: :delete%> </td>
+            <td> <%= link_to "Edit", edit_post_path(post) %></td>
+            </tr>
+        <% end%>
+
+</tbody>
+</table>
+</br>
+<%= link_to "Create new Post", new_post_path, class:"btn btn-danger"%>
+

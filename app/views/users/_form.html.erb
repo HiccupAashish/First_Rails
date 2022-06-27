@@ -1,0 +1,6 @@
+  <%= form_with model: @user do |f|%>
+    <%= f.text_field :name, placeholder: "Enter name"%>
+    <%= f.number_field :age, placeholder: "Enter age"%>
+    <%= f.submit%>
+  <%end%>
+  <%= link_to "Back to Main menu", users_path %>
